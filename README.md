@@ -19,5 +19,4 @@ Components :-
     >Delbutton.jsx    { created separate as want to use todo_container  mulytiple times}
 
 
-
-
+![Screenshot 2024-02-23 033940](https://github.com/thePriestDavos/Todo_app/assets/112301378/540227a4-87da-489d-82f1-734b19746db8)
