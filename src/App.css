@@ -1,0 +1,25 @@
+
+input{
+  width:100%;
+}
+.item-container{
+  background-color: aqua;
+  text-align: left;
+  border: 3px solid rgb(31, 187, 244);
+  width: 70%;
+  margin: 3%;
+  padding: 5%;
+  border-radius: 9px;
+}
+.item-row{
+  margin:9px;
+  border: 3px solid rgb(31, 187, 244);
+  background-color: rgb(153, 255, 127);
+  padding: 1%;
+  
+}
+.del-btn{
+  background-color:rgb(223, 227, 228) ;
+  margin-right: 33px;
+  
+}
