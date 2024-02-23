@@ -1,8 +1,22 @@
-# React + Vite
+currently on the journey of learning react so making some simple project to test my knowledge
+Simple todo app  (only user interface) since used only react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+has a container :
+>first use---to display the entered  todo list
+>second use--- to display completed todo .. since you deleted that means it is completed
 
-Currently, two official plugins are available:
+Functions:-
+          >  You can add items
+          > remove the item
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Components :-
+>App.jsx           main component
+>AppName.jsx       { display app name}
+>AddTodo.jsx      {   contain (inputfield, input date, button to add)}
+>Heading.jsx       {  disply container heading}
+>TodoItems_container.jsx        
+    >TodoItem.jsx     
+    >Delbutton.jsx    { created separate as want to use todo_container  mulytiple times}
+
+
+![Screenshot 2024-02-23 033940](https://github.com/thePriestDavos/Todo_app/assets/112301378/540227a4-87da-489d-82f1-734b19746db8)
