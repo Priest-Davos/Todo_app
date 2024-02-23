@@ -14,9 +14,11 @@ import { useState } from "react"
 function App() {
   const [todoName, setToDoName] = useState("")//temporory
   const [date, setDate] = useState() //temporary
+
   const [todoItems, setToDoItems] = useState([]) //main list
-  const [deletedTodoItems, setDeletedToDoItems] = useState([])
-  const [clickedAddBtn, setClickedAddBtn] = useState("false")
+  const [deletedTodoItems, setDeletedToDoItems] = useState([])//main deleted todo list
+ 
+  const [clickedAddBtn, setClickedAddBtn] = useState("false")//flag 
 
   // const todoItems = [
   //   {
@@ -29,16 +31,13 @@ function App() {
   //assign entered item/toDo to  toDoName variable //for input field
   const handleOnChangeItem = (event) => {
     setClickedAddBtn("false")
-
     setToDoName(event.target.value)
-   
-   // console.log(event.target.value)
-   
+   // console.log(event.target.value)   
   }
+
   // assign entered date to  date variable  //for input field
   const handleOnChangeDate = (event) => {
     setDate(event.target.value)
-
   //  console.log(event.target.value)
   }
 
