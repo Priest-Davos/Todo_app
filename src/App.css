@@ -16,10 +16,36 @@ input{
   border: 3px solid rgb(31, 187, 244);
   background-color: rgb(153, 255, 127);
   padding: 1%;
+  font-weight: bolder;
+
+  
   
 }
 .del-btn{
-  background-color:rgb(223, 227, 228) ;
-  margin-right: 33px;
+  background-color:rgb(14, 204, 49) ;
+
+  /* margin-right: 33px; */
+  float: right;
   
 }
+.add-btn{
+  width: 70%;
+float: left;
+
+}
+.emptyMessage{
+background-color: antiquewhite;
+text-align: center;
+padding: 1%;
+font-size: larger;
+
+
+}
+.container-heading{
+  background-color: rgb(238, 139, 10);
+  text-align: center;
+  padding: 1%;
+  font-size: larger;
+  
+  
+  }
