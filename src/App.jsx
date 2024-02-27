@@ -5,7 +5,7 @@ import "./App.css"
 import TodoItems from "./components/TodoItems_container"
 
 import Heading from "./components/Heading"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 
 function App() {
@@ -17,23 +17,29 @@ function App() {
 
   const [clickedAddBtn, setClickedAddBtn] = useState("false")//flag 
 
+  const numberOfNameUpdate=useRef(0)
+
 
   //assign entered item/toDo to  toDoName variable //for input field
   const handleOnChangeItem = (event) => {
-    setClickedAddBtn("false")
-    setToDoName(event.target.value)
+    numberOfNameUpdate.current +=1//printing it when date change
+    setClickedAddBtn("false");
+    setToDoName(event.target.value);
     // console.log(event.target.value)   
   }
 
   // assign entered date to  date variable  //for input field
   const handleOnChangeDate = (event) => {
-    setDate(event.target.value)
+    console.log(`nuber of time name update ${numberOfNameUpdate.current}`)
+    setDate(event.target.value);
     //  console.log(event.target.value)
   }
 
   //Add  the entered itemm to toDolist 
-  const handleOnClickAdd = () => {
-    setClickedAddBtn("true")
+  const handleOnClickAdd = (event) => {
+    //console.log(event);  // here event has attribute which has form input data
+    event.preventDefault();
+    setClickedAddBtn("true");
     let newTodoItems = [...todoItems, { name: todoName, date: date }];
     // setToDoItems(newTodoItems) 
     // (todoName.length != 0) ? setToDoItems(newTodoItems) : null;
