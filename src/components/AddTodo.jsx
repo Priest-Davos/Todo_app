@@ -1,9 +1,8 @@
-import { useState } from "react";
 
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 function AddTodo({ handleOnClickAdd,  ToDoNameElement, dateElement }) {
-  
+  //(console.log(ToDoNameElement.current))
 
   return (
     <div className="container text-center">
