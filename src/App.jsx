@@ -44,7 +44,7 @@ function App() {
       let removed_item = newItems.splice(indexOfSelectedItem, 1)//remove the selected item from list and return it
       // console.log(removed_item[0])
       setToDoItems(newItems)//assign new item list to main todo list
-      setDeletedToDoItems((currentValues)=>[...currentValues, removed_item[0]])//assign deletted item list to main deleted todoItems list
+      setDeletedToDoItems((currentValues) => [...currentValues, removed_item[0]])//assign deletted item list to main deleted todoItems list
 
       //  console.log(deletedTodoItems)
     }
