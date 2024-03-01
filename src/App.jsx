@@ -2,10 +2,12 @@ import AddTodo from "./components/AddTodo"
 import AppName from "./components/AppName"
 
 import "./App.css"
-import TodoItems from "./components/TodoItems_container"
+import TodoItemsContainer from "./components/TodoItems_container"
 
 import Heading from "./components/Heading"
 import { useRef, useState } from "react"
+import { TodoItemsContext } from "./store/todo-items-store"
+import { DeletedTodoItemsContext } from "./store/deleted-todo-iems-store"
 
 
 function App() {
@@ -51,17 +53,33 @@ function App() {
   }
 
   return (
-    <center className="todo-container">
 
-      <AppName />{/* comp 1 */}
-      <AddTodo handleOnClickAdd={handleOnClickAdd} ToDoNameElement={ToDoNameElement} dateElement={dateElement} />{/* comp 2 */}
-      {/*  <Heading text={"ToDo  List"}/> */}
-      <TodoItems todoItems={todoItems} handleOnClickDelete={handleOnClickDelete} showDelBtn={"true"} />
+    <center className="todo-container">
+      <TodoItemsContext.Provider value={{
+        //since key and value same so can use directly instead of todoItems:todoItems, ...
+        todoItems,
+        handleOnClickAdd,
+        handleOnClickDelete,
+        ToDoNameElement,
+        dateElement,
+
+      }}>
+        <AppName />{/* comp 1 */}
+        <AddTodo  />{/* comp 2 */}
+        {/*  <Heading text={"ToDo  List"}/> */}
+        <TodoItemsContainer showDelBtn={"true"} />
+
+      </TodoItemsContext.Provider>
+
       { /*  <Heading text={"Completed ToDo List"}/> */}
-      <TodoItems todoItems={deletedTodoItems} showDelBtn={"false"} />
+      <DeletedTodoItemsContext.Provider value={{ deletedTodoItems }}>
+        <TodoItemsContainer showDelBtn={"false"} />
+      </DeletedTodoItemsContext.Provider>
+
 
     </center>
-  )
+
+  );
 
 }
 

@@ -1,8 +1,18 @@
 
 import { IoIosAddCircleOutline } from "react-icons/io";
 
-function AddTodo({ handleOnClickAdd,  ToDoNameElement, dateElement }) {
+import { TodoItemsContext } from "../store/todo-items-store";
+import { useContext } from "react";
+
+
+function AddTodo() {
+
+  
+
   //(console.log(ToDoNameElement.current))
+
+  const {ToDoNameElement , dateElement,handleOnClickAdd}=useContext(TodoItemsContext)
+
 
   return (
     <div className="container text-center">
