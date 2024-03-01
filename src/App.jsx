@@ -25,9 +25,9 @@ function App() {
     //console.log(event);  // here event has attribute which has form input data but didnt use that way sinve used reference
     if (todoName.length > 0) {
       setToDoItems((currentValues) => {
-      // console.log({currentValues});
-       return [...currentValues, { name: todoName, date: date }]
-       });
+        // console.log({currentValues});
+        return [...currentValues, { name: todoName, date: date }]
+      });
 
       ToDoNameElement.current.value = ""
       //  dateElement.current.value=""
