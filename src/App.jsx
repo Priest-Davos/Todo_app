@@ -15,30 +15,20 @@ function App() {
   const [todoItems, setToDoItems] = useState([]) //main list
   const [deletedTodoItems, setDeletedToDoItems] = useState([])//main deleted todo list
 
-  const ToDoNameElement = useRef()
-  const dateElement = useRef()
 
 
-  //Add  the entered itemm to toDolist 
-  const handleOnClickAdd = (event) => {
-    event.preventDefault();//important
-    const todoName = ToDoNameElement.current.value
-    const date = dateElement.current.value
-    //console.log(event);  // here event has attribute which has form input data but didnt use that way sinve used reference
-    if (todoName.length > 0) {
-      setToDoItems((currentValues) => {
+  //updaing todoItems main list when click add
+  const onClickAdd=(todoName,date)=>{
+          setToDoItems((currentValues) => {
         // console.log({currentValues});
         return [...currentValues, { name: todoName, date: date }]
       });
-
-      ToDoNameElement.current.value = ""
-      //  dateElement.current.value=""
-    }
   }
 
-  //delete the selected item /todo from list when  btn clicked
+  // //delete the selected item /todo from list when  btn clicked
   const handleOnClickDelete = (event, item) => {
     //console.log(event)
+    console.log(item)
     if (todoItems.includes(item)) {
 
       let newItems = [...todoItems] //create new item list
@@ -58,14 +48,13 @@ function App() {
       <TodoItemsContext.Provider value={{
         //since key and value same so can use directly instead of todoItems:todoItems, ...
         todoItems,
-        handleOnClickAdd,
         handleOnClickDelete,
-        ToDoNameElement,
-        dateElement,
+        onClickAdd,
+    
 
       }}>
-        <AppName />{/* comp 1 */}
-        <AddTodo  />{/* comp 2 */}
+        <AppName />
+        <AddTodo />
         {/*  <Heading text={"ToDo  List"}/> */}
         <TodoItemsContainer showDelBtn={"true"} />
 
@@ -84,3 +73,34 @@ function App() {
 }
 
 export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+//should have moved this to addTodo before but moving it now during(36)
+
+ // //Add  the entered itemm to toDolist 
+  // const handleOnClickAdd = (event) => {
+  //   event.preventDefault();//important
+  //   const todoName = ToDoNameElement.current.value
+  //   const date = dateElement.current.value
+  //   //console.log(event);  // here event has attribute which has form input data but didnt use that way sinve used reference
+  //   if (todoName.length > 0) {
+  //     setToDoItems((currentValues) => {
+  //       // console.log({currentValues});
+  //       return [...currentValues, { name: todoName, date: date }]
+  //     });
+
+  //     ToDoNameElement.current.value = ""
+  //     //  dateElement.current.value=""
+  //   }
+  // }

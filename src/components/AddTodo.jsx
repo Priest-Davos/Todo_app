@@ -2,16 +2,40 @@
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 import { TodoItemsContext } from "../store/todo-items-store";
-import { useContext } from "react";
+import {useRef, useContext } from "react";
 
 
 function AddTodo() {
 
+  const ToDoNameElement = useRef()
+  const dateElement = useRef()
+
+  
   
 
   //(console.log(ToDoNameElement.current))
 
-  const {ToDoNameElement , dateElement,handleOnClickAdd}=useContext(TodoItemsContext)
+  const {onClickAdd}=useContext(TodoItemsContext)
+
+  //Add  the entered itemm to toDolist 
+  const handleOnClickAdd = (event) => {
+    event.preventDefault();//important
+    const todoName = ToDoNameElement.current.value
+    const date = dateElement.current.value
+    //console.log(event);  // here event has attribute which has form input data but didnt use that way sinve used reference
+    if (todoName.length > 0) {
+      // setToDoItems((currentValues) => {
+        //  console.log({currentValues});
+      //   return [...currentValues, { name: todoName, date: date }]
+      // });
+      // console.log(todoName,date)
+      onClickAdd(todoName,date)
+
+      ToDoNameElement.current.value = ""
+      //  dateElement.current.value=""
+    }
+  }
+
 
 
   return (
