@@ -9,6 +9,7 @@ import { useReducer, useRef, useState } from "react";
 import { TodoItemsContext } from "./store/todo-items-store";
 import { DeletedTodoItemsContext } from "./store/deleted-todo-iems-store";
 
+let i = 0
 const todoItemsReducer = (currentTodoItems, action) => {
   //param 1 of todoItems useReducer
   let newTodoItems = currentTodoItems;
@@ -19,17 +20,41 @@ const todoItemsReducer = (currentTodoItems, action) => {
       { name: action.payload.todoName, date: action.payload.date },
     ];
   } else if (action.type == "DEL_ITEM") {
+    let item = action.payload.item
+    // console.log(item)
+    if (newTodoItems.includes(item)) {
+      let newItems = [...newTodoItems]; //create new item list
+      let indexOfSelectedItem = newTodoItems.indexOf(item); //get index of selected item
+      let removed_item = newItems.splice(indexOfSelectedItem, 1); //remove the selected item from list and return it
+      // console.log(removed_item[0])
+
+      newTodoItems = newItems
+      console.log(i += 1)
+      action.payload.dispatchDeletedTodoIems({ type: "ADD_ITEM", item: removed_item[0] })
+    }
+
   }
 
   return newTodoItems;
 };
+const deletedTodoItemsReducer = (currentState, action) => {
+  let deletedTodoItems = currentState;
+  console.log(deletedTodoItems)
+  if (action.type === "ADD_ITEM") {
+
+    if (!currentState.includes(action.item)) {
+      deletedTodoItems = [...currentState, action.item]
+    }
+  }
+
+  return deletedTodoItems
+
+}
 
 function App() {
-  // const [todoItems, setToDoItems] = useState([]); //main list
-  const [deletedTodoItems, setDeletedToDoItems] = useState([]); //main deleted todo list
 
   const [todoItems, dispatchTodoIems] = useReducer(todoItemsReducer, []);
-  //justlost const [deletedTodoItems, dispatchDeletedTodoIems] = useReducer(deletedTodoItemsReducer,[]); //main deleted todo list
+  const [deletedTodoItems, dispatchDeletedTodoIems] = useReducer(deletedTodoItemsReducer, []); //main deleted todo list
 
   //updaing todoItems main list when click add
   const onClickAdd = (todoName, date) => {
@@ -45,32 +70,18 @@ function App() {
     dispatchTodoIems(newItemAction);
   };
 
-  // //updaing todoItems main list when click add
-  // const onClickAdd=(todoName,date)=>{
-  //         setToDoItems((currentValues) => {
-  //       // console.log({currentValues});
-  //       return [...currentValues, { name: todoName, date: date }]
-  //     });
-  // }
-
-  //delete the selected item /todo from list when  btn clicked
   const handleOnClickDelete = (event, item) => {
-    //console.log(event)
-    console.log(item);
-    if (todoItems.includes(item)) {
-      let newItems = [...todoItems]; //create new item list
-      let indexOfSelectedItem = todoItems.indexOf(item); //get index of selected item
-      let removed_item = newItems.splice(indexOfSelectedItem, 1); //remove the selected item from list and return it
-      // console.log(removed_item[0])
-      setToDoItems(newItems); //assign new item list to main todo list
-      setDeletedToDoItems((currentValues) => [
-        ...currentValues,
-        removed_item[0],
-      ]); //assign deletted item list to main deleted todoItems list
-
-      //  console.log(deletedTodoItems)
+    const DeleteItemAction = {
+      type: "DEL_ITEM",
+      payload: {
+        item,
+        dispatchDeletedTodoIems
+      }
     }
-  };
+    dispatchTodoIems(DeleteItemAction)
+  }
+
+
 
   return (
     <center className="todo-container">
@@ -98,6 +109,22 @@ function App() {
 
 export default App;
 
+
+
+
+//++++++++++++++++++++Ignore below lines ++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
 //should have moved this to addTodo before but moving it now during(36)
 
 // //Add  the entered itemm to toDolist
@@ -116,3 +143,31 @@ export default App;
 //     //  dateElement.current.value=""
 //   }
 // }
+
+
+// //***********updaing todoItems main list when click add*********
+// const onClickAdd=(todoName,date)=>{
+//         setToDoItems((currentValues) => {
+//       // console.log({currentValues});
+//       return [...currentValues, { name: todoName, date: date }]
+//     });
+// }
+
+//*********delete the selected item /todo from list when  btn clicked**************
+// const handleOnClickDelete = (event, item) => {
+//   //console.log(event)
+//   console.log(item);
+//   if (todoItems.includes(item)) {
+//     let newItems = [...todoItems]; //create new item list
+//     let indexOfSelectedItem = todoItems.indexOf(item); //get index of selected item
+//     let removed_item = newItems.splice(indexOfSelectedItem, 1); //remove the selected item from list and return it
+//     // console.log(removed_item[0])
+//     setToDoItems(newItems); //assign new item list to main todo list
+//     setDeletedToDoItems((currentValues) => [
+//       ...currentValues,
+//       removed_item[0],
+//     ]); //assign deletted item list to main deleted todoItems list
+
+//     //  console.log(deletedTodoItems)
+//   }
+// };
