@@ -1,5 +1,11 @@
 currently on the journey of learning react so making some simple project to test my knowledge
 Simple todo app  (only user interface) since used only react
+latest branch is Todo_V4_(useReducerHook) ... i didnt merge the branches
+
+![Screenshot 2024-03-06 114814](https://github.com/Priest-Davos/Todo_app/assets/112301378/666da063-a62c-4aa0-8978-220d35188d52)
+![Screenshot 2024-03-06 115018](https://github.com/Priest-Davos/Todo_app/assets/112301378/0af8576b-890c-4930-bcb0-ad5d803541ee)
+![Screenshot 2024-03-06 115028](https://github.com/Priest-Davos/Todo_app/assets/112301378/3068d8c5-d86c-4cc8-851c-78ab75d32c31)
+
 
 has a container :
 >first use---to display the entered  todo list
@@ -19,4 +25,5 @@ Components :-
     >Delbutton.jsx    { created separate as want to use todo_container  mulytiple times}
 
 
-![Screenshot 2024-02-23 033940](https://github.com/thePriestDavos/Todo_app/assets/112301378/540227a4-87da-489d-82f1-734b19746db8)
++++++
+and etc ... watch commit messsages
