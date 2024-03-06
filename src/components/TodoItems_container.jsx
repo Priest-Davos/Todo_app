@@ -9,10 +9,10 @@ import { DeletedTodoItemsContext } from "../store/deleted-todo-iems-store"
 const TodoItemsContainer = ({ showDelBtn }) => {
 
   const contextObj = useContext(TodoItemsContext)//can also get direct items by destructing
-  const delTodoContextObj = useContext(DeletedTodoItemsContext)
+  // const delTodoContextObj = useContext(DeletedTodoItemsContext)
 
   //if  showDelBtn=="true" then todoItems contain normal todoItem else deletedTodoItems
-  const todoItems = showDelBtn == "true" ? contextObj.todoItems : delTodoContextObj.deletedTodoItems
+  const todoItems = showDelBtn == "true" ? contextObj.todoItems : contextObj.deletedTodoItems
 
   // todoItems.map((item)=>{console.log(`todoItems context obj ->${item.name}`)})
 
